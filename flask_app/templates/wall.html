@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div id="header" class = "flex">
+            <h1>Private wall</h1>
+            <div id = "wel-logout" class = 'flex'>
+                <h2>Welcome, {{user.first_name}}</h2>
+                <a href="/logout"><button type="submit">Logout</button></a>
+            </div>
+        </div>
+        <hr>
+        <div id = "content" class = "flex">
+            <div>
+                <p>{{messages|length}} Messages so far:</p>
+                {%for message in messages%}
+                <div id = "messages">
+                    <h2>{{message.sender}} said</h2>
+                    <div class = "flex">
+                        <p>{{message.content}}</p>
+                        <a href="/delete/message/{{message.id}}"><button>Delete</button></a>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+            <div id = "send">
+                {%for user in users%}
+                    {%if user.id != session.user_id%}
+                    <form action="/send/message" method="post" class = "flex">
+                        <input type="hidden" name="sender_id" value="{{session.user_id}}">
+                        <input type="hidden" name="receiver_id" value="{{user.id}}">
+                        <label for="receiver_id">Message {{user.first_name}}:</label>
+                        <textarea name="content" id="content" cols="30" rows="5"></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    {%endif%}
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

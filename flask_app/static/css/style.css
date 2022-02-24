@@ -1,0 +1,72 @@
+#container {
+    background-color: darkslategrey;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 3%;
+    color: white;
+}
+
+#container-fit {
+    background-color: darkslategrey;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 3%;
+    color: white;
+}
+
+
+
+#wel-logout {
+    gap: 25px;
+}
+
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex form {
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+
+h1 {
+    color: burlywood;
+}
+
+.label {
+    padding-top: 20px;
+}
+
+
+
+input{
+    width: 500px;
+    padding: 10px;
+}
+
+
+
+
+input, button {
+    display: block;
+    margin-top: 7px;
+}
+
+
+button {
+    background-color: bisque;
+    width: 80px;
+    padding: 10px;
+    box-shadow: 3px 3px black;
+}
+
+.flex button {
+    font-size: 10px;
+}
